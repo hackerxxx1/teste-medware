@@ -1,0 +1,121 @@
+.botao {
+    margin-right: 5px;
+}
+.img-detalhe{
+    width: 50%;
+    
+}
+.fundo {
+    margin-top: 8%;
+    width: 100%;
+}
+.input1{
+    margin-right:3%;
+}
+.input2{
+    margin-right:3%;
+    margin-top: 3%;
+}
+.titulo-cidade {
+    font-size: 25px;
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+.linha-form{
+    display: flex;
+    flex-direction: row;
+}
+.linha-2 {
+    width: 100%;
+    height: 1px;
+    background-color: #00000054;
+}
+
+.cor-card {
+    background-color: #e9eaec;
+}
+
+.cor-botao-detalhes {
+    background-color: lightseagreen;
+}
+.image-url{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.margem-do-quadrado {
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 55px;
+}
+
+.font-formulario {
+    margin-left: 3px;
+    color: #333652;
+    font-size: small;
+    font-family: sans-serif;
+    margin-bottom: 0px;
+}
+
+.no-after>.dropdown-toggle::after {
+    content: none;
+}
+
+.objeto-menu {
+    color: rgb(255 255 255);
+    font-size: 25px;
+}
+
+.img-fundo{
+    background-color: #22004e5d;
+    min-height: 100px;
+
+}
+
+
+.marginha{
+    width: 60rem;
+    margin-right: 15px;
+}
+#divbusca{
+    background-color:rgba(228, 228, 228, 0.205);
+    border:solid 1px;
+    border-right: none;
+    border-color:red ;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    width: 50rem;
+    height: 3rem;
+    margin-left: 10%;
+    color:white;
+  }
+  
+  #txtBusca{
+    float:left;
+    background-color:white;
+    padding-left:5px;
+    font-style:italic;
+    font-size:18px;
+    border:none;
+    height:32px;
+    width:260px;
+  }
+.search-division{
+    width: 70%;
+    padding-top: 0.6rem;
+    padding-bottom: 0.1rem;
+  }
+.search-button{
+    width: fit-content;
+    display: flex;
+    align-items: flex-start;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    padding-top: 1.5%;
+
+}
