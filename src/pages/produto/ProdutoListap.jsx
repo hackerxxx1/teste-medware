@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
 import CardP from '../../components/cardListas/CardP'
-import ProdutoService from '../../services/ProdutoF';
+import ColabService from '../../services/ColabF';
 
 function ProdutoListap() {
     const [plist, setP] = useState([])
@@ -12,7 +12,7 @@ function ProdutoListap() {
 
     useEffect(() => {
         async function data() {
-            const data = await ProdutoService.search(String(location.state));
+            const data = await ColabService.search(String(location.state));
            
             setP(data);
         }

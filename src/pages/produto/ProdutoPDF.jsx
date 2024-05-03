@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ProdutoService from '../../services/ProdutoF';
+import ColabService from '../../services/ColabF';
 import { useNavigate, useParams } from 'react-router-dom';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -14,7 +14,7 @@ const ProdutoPDF = () => {
  
   useEffect(() => {
     async function data() {
-     const dat = await ProdutoService.get(params.id);
+     const dat = await ColabService.get(params.id);
      setProduto(dat)
     }
     data();

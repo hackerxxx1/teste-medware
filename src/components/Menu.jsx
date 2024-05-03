@@ -18,12 +18,12 @@ const Menu = () => {
 
       <Navbar bg="dark" variant="dark" fixed="top" className="mb-3">
         <Container>
-          <Navbar.Brand href="/" className='logo' >Agnaldo<br/><p className='lut'>luthier</p></Navbar.Brand>
+          <Navbar.Brand href="/" className='logo' >Medware</Navbar.Brand>
 
           <Nav className="me-auto">
             
             
-              <NavDropdown.Item href="/produto" className='text-white' >Atendimentos</NavDropdown.Item>
+              <NavDropdown.Item href="/produto" className='text-white colabut' >Colaboradores</NavDropdown.Item>
               <div className="search-division d-flex justify-content-end">
               <form
                   

@@ -1,13 +1,13 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc,query, where } from "firebase/firestore"
 import { getDownloadURL, getStorage, listAll, ref, uploadBytesResumable } from "firebase/storage";
-import app from "./apiFirebase";
+import app from "./apiMedware";
 
 const db = getFirestore(app); 
 const storage = getStorage(app); 
-class ProdutoService {
+class HorasService {
     
     async getAll(){//index
-       const dados = await getDocs(collection(db, "produto"));
+       const dados = await getDocs(collection(db, "horas"));
        return dados
     }
     async search(prop){//search retorna um array de docs 
@@ -32,7 +32,7 @@ class ProdutoService {
     }
     async get(id){//show
         
-        const docRef = doc(db, "produto", String(id));
+        const docRef = doc(db, "horas", String(id));
         const dat = await getDoc(docRef);
 
     if (dat.exists()) {
@@ -57,7 +57,7 @@ class ProdutoService {
 
     async create(dados){//store
         try {
-            const docRef = await addDoc(collection(db, "produto"), dados);
+            const docRef = await addDoc(collection(db, "horas"), dados);
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);
@@ -65,7 +65,7 @@ class ProdutoService {
     }
 
     async update(id, dados){//update
-        await setDoc(doc(db, "produto", String(id)), dados);
+        await setDoc(doc(db, "horas", String(id)), dados);
     }
     async updateimage(id, dados,images,path){//update
         
@@ -73,14 +73,14 @@ class ProdutoService {
             console.log(item);
             uploadBytesResumable(ref(storage,path+"/"+item.name),item)
         })
-        await setDoc(doc(db, "produto", String(id)), dados);
+        await setDoc(doc(db, "horas", String(id)), dados);
     }
 
     async delete(id){//destroy
-        await deleteDoc(doc(db, "produto", String(id)));
+        await deleteDoc(doc(db, "horas", String(id)));
         
     }
 
 }
 
-export default new ProdutoService()
+export default new HorasService()
