@@ -1,16 +1,26 @@
 import axios from "axios";
-var apiDeputados
-axios.post('http://201.8.76.126:91/api/Acesso/login',{
-    "identificacao": "agendamentoweb",
-    "senha": "medware@123"
-}).then(
+var apimedware
+var token1
 
- apiDeputados = axios.create({
-  baseURL: "http://201.8.76.126:91/api/Medware",
-  headers: {
-    'Content-type': 'application/json;charset=utf-8',
-    'Authorization': `bearer ${Response.token}` 
+ async function teste() {
+    token1 = await axios.post('http://clinicaesberard.ddns.net:91/api/Acesso/login',{
+        "identificacao": "agendamentoweb",
+        "senha": "medware@123",
+    });
+    token1 = await token1.data.token 
+    return (
+        axios.create({
+            baseURL: "http://clinicaesberard.ddns.net:91/api/Medware",
+           headers: {
+               'Content-type': 'application/json',
+               'Authorization': `bearer ${ await token1}`
+           }
+        })
+    );  
 }
+
+teste().then((result) => {
+    apimedware= result
 })
-)
-export default apiDeputados;
+console.log(apimedware);
+export default apimedware;

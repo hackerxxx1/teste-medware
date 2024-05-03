@@ -13,6 +13,7 @@ const Home = () => {
       const data = pega.data.dados;
       console.log(data);
   }
+  data()
     return () => {
       
     }
