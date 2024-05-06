@@ -47,7 +47,7 @@ console.log(serv);
   
   return (
     <div className='fundo'>
-      <h1 className='titulo-cidade'>Cadastre a hora extra</h1>
+      <h1 className='titulo-cidade'>Cadastre a Folga</h1>
       <div className="linha-2 mb-2"></div>
       <Form className='p-lg-5'>
        <Col>

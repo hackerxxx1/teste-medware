@@ -37,7 +37,8 @@ const ProdutoForm = () => {
  
   function salvar(dados) {
      dados.nome= dados.nome.toLowerCase()
-     dados.horas = serv.horas
+     if(serv.horas){dados.horas = serv.horas}else{dados.horas = 0}
+     console.log(dados);
     if (params.id) {
       ColabService.update(params.id, dados)
     } else {
