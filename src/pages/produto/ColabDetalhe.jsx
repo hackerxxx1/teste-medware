@@ -40,6 +40,7 @@ return (
          email={colab.email}
          tipo={colab.tipo}
          fotoc={colab.fotoc}
+         horas={colab.horas}
          ur={url}
        />}
      </div>

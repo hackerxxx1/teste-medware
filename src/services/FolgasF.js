@@ -4,10 +4,10 @@ import app from "./apiMedware";
 
 const db = getFirestore(app); 
 const storage = getStorage(app); 
-class HorasService {
+class FolgasService {
     
     async getAll(){//index
-       const dados = await getDocs(collection(db, "extra"));
+       const dados = await getDocs(collection(db, "folga"));
        return dados
     }
     async search(prop){//search retorna um array de docs 
@@ -29,7 +29,7 @@ class HorasService {
         return result;
     }
     async get(id){//show
-        const docRef = doc(db, "extra", String(id));
+        const docRef = doc(db, "folga", String(id));
         const dat = await getDoc(docRef);
 
     if (dat.exists()) {
@@ -54,7 +54,7 @@ class HorasService {
 
     async create(dados){//store
         try {
-            const docRef = await addDoc(collection(db, "extra"), dados);
+            const docRef = await addDoc(collection(db, "folga"), dados);
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);
@@ -62,7 +62,7 @@ class HorasService {
     }
 
     async update(id, dados){//update
-        await setDoc(doc(db, "extra", String(id)), dados);
+        await setDoc(doc(db, "folga", String(id)), dados);
     }
     async updateimage(id, dados,images,path){//update
         
@@ -70,14 +70,14 @@ class HorasService {
             console.log(item);
             uploadBytesResumable(ref(storage,path+"/"+item.name),item)
         })
-        await setDoc(doc(db, "extra", String(id)), dados);
+        await setDoc(doc(db, "folga", String(id)), dados);
     }
 
     async delete(id){//destroy
-        await deleteDoc(doc(db, "extra", String(id)));
+        await deleteDoc(doc(db, "folga", String(id)));
         
     }
 
 }
 
-export default new HorasService()
+export default new FolgasService()

@@ -23,7 +23,7 @@ const Menu = () => {
           <Nav className="me-auto">
             
             
-              <NavDropdown.Item href="/produto" className='text-white colabut' >Colaboradores</NavDropdown.Item>
+              <NavDropdown.Item href="/colab" className='text-white colabut' >Colaboradores</NavDropdown.Item>
               <div className="search-division d-flex justify-content-end">
               <form
                   

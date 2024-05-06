@@ -19,23 +19,29 @@ const ProdutoForm = () => {
 
   useEffect(() => {
     if (params.id) {
-      const produto = ColabService.get(params.id)
-
-      for (let campo in produto) {
-        setValue(campo, produto[campo])
+      async function pegadata () {
+        
+        const data = await ColabService.get(params.id)
+        console.log(data)
+        setServ(data)
+      }
+      pegadata()
+      for (let campo in serv) {
+        setValue(campo, serv[campo])
       }
     }
   }, [params.id, setValue])
 
   function salvar(dados) {
      dados.nome= dados.nome.toLowerCase()
+     dados.horas = serv.horas
     if (params.id) {
       ColabService.update(params.id, dados)
     } else {
       ColabService.create(dados)
     }
 
-    navigate('/produto')
+    navigate('/colab')
   }
   function arrayserv() {
     if(n<10){
