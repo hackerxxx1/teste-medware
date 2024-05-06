@@ -6,7 +6,7 @@ import { FaPlus } from 'react-icons/fa'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import HorasService from '../../services/HorasF';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import colabV from '../../components/validators/colabV';
+import horasV from '../../components/validators/horasV';
 
 
 const HorasForm = () => {
@@ -37,14 +37,7 @@ const HorasForm = () => {
 
     navigate('/produto')
   }
-  function arrayserv() {
-    if(n<10){
-
-      setN(n+1);
-      setServ([...serv,n+1]);
-    }
-    
-  }
+ 
   
   return (
     <div className='fundo'>
@@ -52,21 +45,18 @@ const HorasForm = () => {
       <div className="linha-2 mb-2"></div>
 
       <Form className='p-lg-5'>
-      <Col className='py-4'>
-        <Button className='btn btn-warning '  onClick={()=>{arrayserv()}}><FaPlus /> Novo serviço</Button>          
-      </Col>
+       <Col>
             <div className='linha-form'>
               <Form.Group className="mb-3 marginha" controlId={"servico"}>
-                <Form.Label>Nome do serviço {p} prestado: </Form.Label>
-                <Form.Control  type="text" {...register(("servico"), HorasV.servico)} />
+                <Form.Label>Nome do serviço prestado: </Form.Label>
+                <Form.Control  type="text" {...register(("servico"), horasV.servico)} />
               </Form.Group>
               <Form.Group className="mb-3" controlId={"precoserv"+p}>
-                <Form.Label>Preço do serviço {p}: </Form.Label>
-                <Form.Control type="number" {...register(("precoserv"+p), HorasV.precoserv)} />
+                <Form.Label>Preço do serviço: </Form.Label>
+                <Form.Control type="number" {...register(("precoserv"+p), horasV.precoserv)} />
               </Form.Group>
               </div>
         </Col>
-        </div>
         <div className="text-center">
           <Link className='btn btn-danger botao' to={-1}><BsArrowLeftCircleFill /></Link>
           <Button onClick={handleSubmit(salvar)} className='btn btn-success botao'><BsCheckCircleFill /></Button>{' '}

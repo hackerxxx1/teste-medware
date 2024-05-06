@@ -7,7 +7,7 @@ const storage = getStorage(app);
 class HorasService {
     
     async getAll(){//index
-       const dados = await getDocs(collection(db, "horas"));
+       const dados = await getDocs(collection(db, "horas/extra"));
        return dados
     }
     async search(prop){//search retorna um array de docs 
@@ -24,15 +24,12 @@ class HorasService {
             //         result.push(pega[index])
             //     }
             // }
-      
-         
-       
+
             console.log(result);
         return result;
     }
     async get(id){//show
-        
-        const docRef = doc(db, "horas", String(id));
+        const docRef = doc(db, "horas/extra", String(id));
         const dat = await getDoc(docRef);
 
     if (dat.exists()) {
@@ -57,7 +54,7 @@ class HorasService {
 
     async create(dados){//store
         try {
-            const docRef = await addDoc(collection(db, "horas"), dados);
+            const docRef = await addDoc(collection(db, "horas/extra"), dados);
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);
@@ -65,7 +62,7 @@ class HorasService {
     }
 
     async update(id, dados){//update
-        await setDoc(doc(db, "horas", String(id)), dados);
+        await setDoc(doc(db, "horas/extra", String(id)), dados);
     }
     async updateimage(id, dados,images,path){//update
         
@@ -73,11 +70,11 @@ class HorasService {
             console.log(item);
             uploadBytesResumable(ref(storage,path+"/"+item.name),item)
         })
-        await setDoc(doc(db, "horas", String(id)), dados);
+        await setDoc(doc(db, "horas/extra", String(id)), dados);
     }
 
     async delete(id){//destroy
-        await deleteDoc(doc(db, "horas", String(id)));
+        await deleteDoc(doc(db, "horas/extra", String(id)));
         
     }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
-import { FaFilePdf,FaRegImages } from 'react-icons/fa'
+import { MdOutlineMoreTime } from 'react-icons/md'
 import ColabService from '../../services/ColabF';
 import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
@@ -47,6 +47,7 @@ const CardP = (p) => {
                {p.dados && <Card.Title>{p.dados.nome.stringValue}{' '}{'-'}{' '}{p.dados.tipo.stringValue}</Card.Title>}
                 <Link to={'/produto/' + p.id} className='btn btn-light botao'><BsFillEyeFill /></Link>
                 <Link to={'/produto/update/' + p.id} className='btn btn-light botao'><BsFillBrushFill /></Link>
+                <Link to={'/produto/update/' + p.id} className='btn btn-light botao'><MdOutlineMoreTime /></Link>
                 <Button className='btn btn-light' onClick={() => apagar(p.id)}><BsTrashFill /></Button>
             </Card.Body>
         </Card>
