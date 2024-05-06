@@ -34,7 +34,7 @@ const DetalheP = (p) => {
                             <ListGroup className="list-group-flush">
                                 <ListGroupItem>Telefone: {p.telefone}</ListGroupItem>
                                 <ListGroupItem>Email: {p.email}</ListGroupItem>
-                                <ListGroupItem>Quantidade de horas na casa: {p.Horas}</ListGroupItem>
+                              {p.horas&&  <ListGroupItem>Quantidade de horas na casa: {p.horas}</ListGroupItem>}
                             </ListGroup>
                             <Accordion defaultActiveKey="1" flush>
                                 <Accordion.Item eventKey="0">

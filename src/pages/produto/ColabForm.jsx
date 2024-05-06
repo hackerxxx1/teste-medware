@@ -26,12 +26,15 @@ const ProdutoForm = () => {
         setServ(data)
       }
       pegadata()
-      for (let campo in serv) {
-        setValue(campo, serv[campo])
-      }
+      
     }
-  }, [params.id, setValue])
-
+  }, [params.id])
+ useEffect(() => {
+  for (let campo in serv) {
+    setValue(campo, serv[campo])
+  }
+ }, [setValue,serv])
+ 
   function salvar(dados) {
      dados.nome= dados.nome.toLowerCase()
      dados.horas = serv.horas
