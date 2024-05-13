@@ -4,6 +4,7 @@ import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
 import { MdOutlineMoreTime } from 'react-icons/md'
 import {FaRegCalendarCheck  } from 'react-icons/fa'
 import FolgasService from '../../services/FolgasF';
+import ColabService from '../../services/ColabF';
 import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';
@@ -18,7 +19,7 @@ const CardD = (p) => {
  
     useEffect(() => {
       async function data() {
-       const dat = await FolgasService.get(p.id);
+       const dat = await ColabService.get(p.colab);
        setColab(dat)
       }
       data();
@@ -27,17 +28,20 @@ const CardD = (p) => {
     function apagar(id) {
         swal({
             title: "Tem certeza?",
-            text: "Uma vez excluído, você não será capaz de recuperar este arquivo!",
+            text: "Uma vez excluído, você não será capaz de recuperar Esta Folga!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
         }).then((podeApagar) => {
             if (podeApagar) {
                 FolgasService.delete(id)
+                colab.horas = colab.horas + 9
+                console.log(colab.horas);
+                ColabService.update(p.colab, colab)
                 swal("Bom trabalho!", "Você excluiu o produto!", "success")
                     .then(function () { window.location.reload() });
             } else {
-                swal("Tudo bem!", "Você decidiu não excluir a cidade!", "info");
+                swal("Tudo bem!", "Você decidiu não excluir a Folga!", "info");
             }
         })
     }

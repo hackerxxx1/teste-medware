@@ -3,12 +3,13 @@ import Accordion from 'react-bootstrap/Accordion';
 import HorasService from '../../services/HorasF';
 import FolgasService from '../../services/FolgasF';
 import { Card, Col, Container, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import CardD from '../../components/cardListas/CardD'
 import CardF from '../../components/cardListas/CardF'
 
 const DetalheP = (p) => {
+    const params = useParams()
     const [horas, setHoras] = useState([])
     const [folgas, setFolgas] = useState([])
      useEffect(() => {
@@ -46,6 +47,7 @@ const DetalheP = (p) => {
                                              <CardD
                                                  id={p.id}
                                                  dados={p._document.data.value.mapValue.fields}
+                                                 colab={params.id}
                                              />
                                          </Col>
                                      ))}
@@ -62,6 +64,7 @@ const DetalheP = (p) => {
                                              <CardF
                                                  id={p.id}
                                                  dados={p._document.data.value.mapValue.fields}
+                                                 colab={params.id}
                                              />
                                          </Col>
                                      ))}

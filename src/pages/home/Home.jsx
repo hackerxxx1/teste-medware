@@ -18,7 +18,7 @@ const Home = () => {
   
   return (
     <div className='fundo'>
-       <h1>testando</h1>
+       <h1>Medware horas seja bem vindo</h1>
     </div >
   )
 }

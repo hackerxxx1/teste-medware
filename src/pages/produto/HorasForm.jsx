@@ -31,7 +31,7 @@ const HorasForm = () => {
   }, [params.id, setValue])
 console.log(serv);
   function salvar(dados) {
-    if (serv.horas){serv.horas= Number(dados.horas) + Number(serv.horas)}else{serv.horas=Number(dados.horas)}
+    if (serv.horas){serv.horas= Number(dados.horas) + Number(serv.horas)}else if(serv.horas < 0){serv.horas = serv.horas + Number(dados.horas)}else{serv.horas=Number(dados.horas)}
      console.log(serv);
     if (params.id) {
       dados.colab = params.id
@@ -60,6 +60,11 @@ console.log(serv);
               <Form.Group className="mb-3" controlId={"horas"}>
                 <Form.Label>Horas de serviço: </Form.Label>
                 <Form.Control type="number" {...register(("horas"), horasV.horas)} />
+              </Form.Group>
+              <Form.Group className="mb-3 input1" controlId="data">
+               <Form.Label>data de entrada: </Form.Label>
+               <Form.Control isInvalid={errors.datain} type="date" {...register("data", horasV.data)} />
+               {errors.datain && <span>{errors.datain.message}</span>}
               </Form.Group>
               </div>
         </Col>

@@ -3,8 +3,9 @@ import { Card, Button } from 'react-bootstrap'
 import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
 import { MdOutlineMoreTime } from 'react-icons/md'
 import {FaRegCalendarCheck  } from 'react-icons/fa'
-import HorasService from '../../services/HorasF';
 import { Link } from 'react-router-dom'
+import ColabService from '../../services/ColabF';
+import HorasService from '../../services/HorasF';
 import "../css/Projeto.css"
 import swal from 'sweetalert';
 import pdfMake from "pdfmake/build/pdfmake";
@@ -18,7 +19,8 @@ const CardD = (p) => {
  
     useEffect(() => {
       async function data() {
-       const dat = await HorasService.get(p.id);
+       const dat = await ColabService.get(p.colab);
+
        setColab(dat)
       }
       data();
@@ -34,6 +36,8 @@ const CardD = (p) => {
         }).then((podeApagar) => {
             if (podeApagar) {
                 HorasService.delete(id)
+                colab.horas = Number(colab.horas)-Number(p.dados.horas.stringValue)
+                ColabService.update(p.colab, colab)
                 swal("Bom trabalho!", "Você excluiu o produto!", "success")
                     .then(function () { window.location.reload() });
             } else {
@@ -45,8 +49,8 @@ const CardD = (p) => {
          <Card>
             
             <Card.Body className='cor-card'>
-            {console.log(p)}
-             {p.dados && <Card.Title>{p.dados.servico.stringValue}{' '}{'-'}{' '}{p.dados.horas.stringValue}</Card.Title>}
+         
+             {p.dados && <Card.Title>{p.dados.data.stringValue}{' '}{'-'}{' '}{p.dados.servico.stringValue}{' '}{'-'}{' '}{p.dados.horas.stringValue}</Card.Title>}
                <Button className='btn btn-light' onClick={() => apagar(p.id)}><BsTrashFill /></Button>
              </Card.Body>
          </Card>
