@@ -13,10 +13,8 @@ class ColabService {
     async search(prop){//search retorna um array de docs 
         const q = await this.getAll()
         const pega =q.docs
-        console.log(pega.filter((item)=> console.log(item._document.data.value.mapValue.fields.nome.stringValue.toLowerCase())));
+        // console.log(pega.filter((item)=> console.log(item._document.data.value.mapValue.fields.nome.stringValue.toLowerCase())));
         var result = pega.filter((item)=> (item._document.data.value.mapValue.fields.nome.stringValue).toLowerCase().includes(prop.toLowerCase()))
-       
-            
             // for (let index = 0; index < pega.length; index++) {
             //     const compara = await pega[index]._document.data.value.mapValue.fields.nome
             //     console.log(compara);
@@ -27,7 +25,7 @@ class ColabService {
       
          
        
-            console.log(result);
+            // console.log(result);
         return result;
     }
     async get(id){//show
@@ -36,11 +34,12 @@ class ColabService {
         const dat = await getDoc(docRef);
 
     if (dat.exists()) {
-        console.log("Document data:", dat.data());
+        // console.log("Document data:", dat.data());
         return dat.data();
     } else {
      // doc.data() will be undefined in this case
          console.log("No such document!");
+         return undefined
     }
         
     }
@@ -70,7 +69,7 @@ class ColabService {
     async updateimage(id, dados,images,path){//update
         
         images.map((item)=> {
-            console.log(item);
+            // console.log(item);
             uploadBytesResumable(ref(storage,path+"/"+item.name),item)
         })
         await setDoc(doc(db, "horas", String(id)), dados);

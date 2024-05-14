@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
-import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
-import { MdOutlineMoreTime } from 'react-icons/md'
-import {FaRegCalendarCheck  } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { BsTrashFill, BsFillBrushFill} from 'react-icons/bs'
 import ColabService from '../../services/ColabF';
 import HorasService from '../../services/HorasF';
+import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';
 import pdfMake from "pdfmake/build/pdfmake";
@@ -14,9 +12,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const CardD = (p) => {
     const [colab, setColab] = useState([])
-   
-  
- 
     useEffect(() => {
       async function data() {
        const dat = await ColabService.get(p.colab);
@@ -49,8 +44,8 @@ const CardD = (p) => {
          <Card>
             
             <Card.Body className='cor-card'>
-         
              {p.dados && <Card.Title>{p.dados.data.stringValue}{' '}{'-'}{' '}{p.dados.servico.stringValue}{' '}{'-'}{' '}{p.dados.horas.stringValue}</Card.Title>}
+               <Link to={'/horas/update/' + p.id} className='btn btn-light botao'><BsFillBrushFill /></Link>
                <Button className='btn btn-light' onClick={() => apagar(p.id)}><BsTrashFill /></Button>
              </Card.Body>
          </Card>

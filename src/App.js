@@ -31,6 +31,7 @@ function App() {
             <Route path="/colab/create" element={<ColabForm />} />
             {/* <Route path="/produto/createi" element={<ProdutoImage />} /> */}
             <Route path="/colab/update/:id" element={<ColabForm />} />
+            <Route path="/horas/create/:id" element={<HorasForm />} />
             <Route path="/horas/update/:id" element={<HorasForm />} />
             <Route path="/Folgas/update/:id" element={<FolgasForm />} />
 

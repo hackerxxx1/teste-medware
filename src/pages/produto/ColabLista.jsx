@@ -11,15 +11,11 @@ function ProdutoLista() {
     useEffect(() => {
         async function data() {
             const data = await ColabService.getAll();
-            console.log(data);           
             setP(data.docs);
-         
         }
         data();
-        
-        
     }, [])
-console.log(plist);
+
     return (
         <div className='fundo'>
             <Container>
@@ -31,7 +27,7 @@ console.log(plist);
                 <Row>
                     {plist.map((p, i) => (
                         <Col md={4} className="py-3" key={p.id}>
-                            {console.log(p._document.data.value.mapValue.fields)}
+                            {/* {console.log(p._document.data.value.mapValue.fields)} */}
                             <CardP
                                 id={p.id}
                                 dados={p._document.data.value.mapValue.fields}

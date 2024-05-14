@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
-import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
-import { MdOutlineMoreTime } from 'react-icons/md'
-import {FaRegCalendarCheck  } from 'react-icons/fa'
+import { BsTrashFill } from 'react-icons/bs'
 import FolgasService from '../../services/FolgasF';
 import ColabService from '../../services/ColabF';
-import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';
 import pdfMake from "pdfmake/build/pdfmake";
@@ -14,9 +11,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const CardD = (p) => {
     const [colab, setColab] = useState([])
-   
-  
- 
     useEffect(() => {
       async function data() {
        const dat = await ColabService.get(p.colab);

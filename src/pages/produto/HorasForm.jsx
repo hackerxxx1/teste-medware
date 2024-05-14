@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button,  Col,  Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form';
-import { BsCheckCircleFill, BsTrashFill } from 'react-icons/bs'
-import { FaPlus } from 'react-icons/fa'
+import { BsCheckCircleFill} from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import HorasService from '../../services/HorasF';
 import ColabService from '../../services/ColabF';
@@ -14,8 +13,9 @@ const HorasForm = () => {
  
   const params = useParams()
   const navigate = useNavigate()
-  const [n, setN] = useState(0)
   const [serv, setServ] = useState([])
+  const [h, setH] = useState([])
+  const [tri,setTri] = useState(false)
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   useEffect(() => {
@@ -23,21 +23,45 @@ const HorasForm = () => {
       async function pegadata () {
         
         const data = await ColabService.get(params.id)
-        console.log(data);
-        setServ(data)
+    //    console.log(data);
+        if(data !== undefined){
+          setServ(data)
+        }else{
+          const dat = await HorasService.get(params.id)
+          const data = await ColabService.get(dat.colab)
+  // console.log(dat);
+          setTri(true)
+          setServ(data)
+          setH(dat)
+        }
+
       }
       pegadata()
     }
-  }, [params.id, setValue])
-console.log(serv);
+  }, [params.id])
+
+  useEffect(() => {
+    for (let campo in h) {
+      setValue(campo, h[campo])
+    }
+   }, [setValue,h])
+//console.log(serv);
+//console.log(h);
   function salvar(dados) {
-    if (serv.horas){serv.horas= Number(dados.horas) + Number(serv.horas)}else if(serv.horas < 0){serv.horas = serv.horas + Number(dados.horas)}else{serv.horas=Number(dados.horas)}
-     console.log(serv);
-    if (params.id) {
+    
+    if (params.id && tri === false) {
+      //se for create para poder fazer a hora no mesmo componente
+      if (serv.horas){serv.horas= Number(dados.horas) + Number(serv.horas)}else if(serv.horas < 0){serv.horas = serv.horas + Number(dados.horas)}else{serv.horas=Number(dados.horas)}
+      //console.log(serv);
       dados.colab = params.id
       ColabService.update(params.id, serv)
       HorasService.create(dados)
-    } else {
+    } else if(tri === true){
+      //se for update dar update tanto nos dados do colab quanto nos dados das horas
+      if (serv.horas){serv.horas= (Number(serv.horas)- Number(h.horas))+ Number(dados.horas)}else{alert("voce esta editando algo que não e possivel")}
+      ColabService.update(h.colab, serv)
+      HorasService.update(params.id,dados)
+    }else {
       console.log("erro de update de horas");
     }
 

@@ -13,7 +13,7 @@ class FolgasService {
     async search(prop){//search retorna um array de docs 
         const q = await this.getAll()
         const pega =q.docs
-        console.log(pega.filter((item)=> console.log(item._document.data.value.mapValue.fields.colab.stringValue.toLowerCase())));
+        // console.log(pega.filter((item)=> console.log(item._document.data.value.mapValue.fields.colab.stringValue.toLowerCase())));
         var result = pega.filter((item)=> (item._document.data.value.mapValue.fields.colab.stringValue).toLowerCase().includes(prop.toLowerCase()))
        
             
@@ -25,7 +25,7 @@ class FolgasService {
             //     }
             // }
 
-            console.log(result);
+            // console.log(result);
         return result;
     }
     async get(id){//show
@@ -33,11 +33,11 @@ class FolgasService {
         const dat = await getDoc(docRef);
 
     if (dat.exists()) {
-        console.log("Document data:", dat.data());
+        // console.log("Document data:", dat.data());
         return dat.data();
     } else {
      // doc.data() will be undefined in this case
-         console.log("No such document!");
+        console.log("No such document!");
     }
         
     }
@@ -49,15 +49,15 @@ class FolgasService {
     async geturlimg(path){
         const refer = ref(storage,path)
         const url = await getDownloadURL(refer)
-    return url
+        return url
     }
 
     async create(dados){//store
         try {
             const docRef = await addDoc(collection(db, "folga"), dados);
-            console.log("Document written with ID: ", docRef.id);
+             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
-            console.error("Error adding document: ", e);
+             console.error("Error adding document: ", e);
           }
     }
 
@@ -67,7 +67,7 @@ class FolgasService {
     async updateimage(id, dados,images,path){//update
         
         images.map((item)=>{
-            console.log(item);
+            // console.log(item);
             uploadBytesResumable(ref(storage,path+"/"+item.name),item)
         })
         await setDoc(doc(db, "folga", String(id)), dados);

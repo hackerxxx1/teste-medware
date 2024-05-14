@@ -13,7 +13,7 @@ class HorasService {
     async search(prop){//search retorna um array de docs 
         const q = await this.getAll()
         const pega =q.docs
-        console.log(pega.filter((item)=> console.log(item._document.data.value.mapValue.fields.colab.stringValue.toLowerCase())));
+        // console.log(pega.filter((item)=> console.log(item._document.data.value.mapValue.fields.colab.stringValue.toLowerCase())));
         var result = pega.filter((item)=> (item._document.data.value.mapValue.fields.colab.stringValue).toLowerCase().includes(prop.toLowerCase()))
        
             
@@ -25,7 +25,7 @@ class HorasService {
             //     }
             // }
 
-            console.log(result);
+            // console.log(result);
         return result;
     }
     async get(id){//show
@@ -33,7 +33,7 @@ class HorasService {
         const dat = await getDoc(docRef);
 
     if (dat.exists()) {
-        console.log("Document data:", dat.data());
+        // console.log("Document data:", dat.data());
         return dat.data();
     } else {
      // doc.data() will be undefined in this case
@@ -67,7 +67,7 @@ class HorasService {
     async updateimage(id, dados,images,path){//update
         
         images.map((item)=>{
-            console.log(item);
+            // console.log(item);
             uploadBytesResumable(ref(storage,path+"/"+item.name),item)
         })
         await setDoc(doc(db, "extra", String(id)), dados);

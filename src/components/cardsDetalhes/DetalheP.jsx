@@ -20,8 +20,7 @@ const DetalheP = (p) => {
             setFolgas(dat1)
            }
            data()
-     }, [])
-     
+     }, [p.id])
     return (
         <div className='margem-do-quadrado'>
             <Container>
@@ -35,7 +34,7 @@ const DetalheP = (p) => {
                             <ListGroup className="list-group-flush">
                                 <ListGroupItem>Telefone: {p.telefone}</ListGroupItem>
                                 <ListGroupItem>Email: {p.email}</ListGroupItem>
-                              {p.horas != undefined && p.horas != 0 &&  <ListGroupItem>Quantidade de horas na casa: {p.horas}</ListGroupItem>}
+                              {p.horas !== undefined && p.horas !== 0 &&  <ListGroupItem>Quantidade de horas na casa: {p.horas}</ListGroupItem>}
                             </ListGroup>
                             <Accordion defaultActiveKey="1" flush>
                                 <Accordion.Item eventKey="0">
@@ -43,7 +42,7 @@ const DetalheP = (p) => {
                                     <Accordion.Body>
                                     {horas.map((p, i) => (
                                          <Col md={4} className="py-3" key={p.id}>
-                                             {console.log(p._document.data.value.mapValue.fields)}
+                                             {/* {console.log(p._document.data.value.mapValue.fields)} */}
                                              <CardD
                                                  id={p.id}
                                                  dados={p._document.data.value.mapValue.fields}
@@ -60,7 +59,7 @@ const DetalheP = (p) => {
                                     <Accordion.Body>
                             {folgas.map((p, i) => (
                                          <Col md={4} className="py-3" key={p.id}>
-                                             {console.log(p._document.data.value.mapValue.fields)}
+                                             {/* {console.log(p._document.data.value.mapValue.fields)} */}
                                              <CardF
                                                  id={p.id}
                                                  dados={p._document.data.value.mapValue.fields}

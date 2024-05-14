@@ -22,7 +22,7 @@ const ProdutoForm = () => {
       async function pegadata () {
         
         const data = await ColabService.get(params.id)
-        console.log(data)
+        
         setServ(data)
       }
       pegadata()
