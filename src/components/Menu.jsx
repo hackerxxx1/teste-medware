@@ -13,6 +13,7 @@ const Menu = () => {
     const values = getValues();
     navigate("/produto/lista", { state: values.busca });
   }
+  
   return (
     <div  >
 
@@ -32,18 +33,7 @@ const Menu = () => {
                 >
                   <input type="text" id="divbusca" {...register("busca")} />
                 </form>
-                {
-                  document.addEventListener("keypress", function(e) {
-                    if(e.key === 'Enter') {
-                    
-                        var btn = document.querySelector("#submit");
-                      
-                      btn.click();
-                    
-                    }
-                  })
-                }
-                <Button type="submit" id="submit" onClick={handleSubmit(receiveData)} className="search-button btn btn-light btn-outline-danger">
+                <Button type="submit" id="submit"  onClick={handleSubmit(receiveData)} className="search-button btn btn-light btn-outline-danger">
                      <RiSearchEyeLine className='iconi'/>Pesquisar
                 </Button>
           </div>

@@ -32,7 +32,7 @@ const CardD = (p) => {
                 colab.horas = colab.horas + 9
                 console.log(colab.horas);
                 ColabService.update(p.colab, colab)
-                swal("Bom trabalho!", "Você excluiu o produto!", "success")
+                swal("Bom trabalho!", "Você excluiu a folga!", "success")
                     .then(function () { window.location.reload() });
             } else {
                 swal("Tudo bem!", "Você decidiu não excluir a Folga!", "info");

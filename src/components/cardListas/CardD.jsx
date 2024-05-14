@@ -24,7 +24,7 @@ const CardD = (p) => {
     function apagar(id) {
         swal({
             title: "Tem certeza?",
-            text: "Uma vez excluído, você não será capaz de recuperar este arquivo!",
+            text: "Uma vez excluído, você não será capaz de recuperar essas horas!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -33,10 +33,10 @@ const CardD = (p) => {
                 HorasService.delete(id)
                 colab.horas = Number(colab.horas)-Number(p.dados.horas.stringValue)
                 ColabService.update(p.colab, colab)
-                swal("Bom trabalho!", "Você excluiu o produto!", "success")
+                swal("Bom trabalho!", "Você excluiu as horas extras!", "success")
                     .then(function () { window.location.reload() });
             } else {
-                swal("Tudo bem!", "Você decidiu não excluir a cidade!", "info");
+                swal("Tudo bem!", "Você decidiu não excluir as horas extras!", "info");
             }
         })
     }

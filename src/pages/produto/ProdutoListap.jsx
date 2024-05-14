@@ -31,7 +31,6 @@ function ProdutoListap() {
                         <Col md={4} className="py-3" key={p.id}>
                             
                             <CardP
-                                
                                 id={p.id}
                                 dados={p._document.data.value.mapValue.fields}
                             />
